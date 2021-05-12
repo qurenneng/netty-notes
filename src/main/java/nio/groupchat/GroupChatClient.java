@@ -29,7 +29,7 @@ public class GroupChatClient {
 
         selector = Selector.open();
         //连接服务器
-        socketChannel = socketChannel.open(new InetSocketAddress("127.0.0.1", PORT));
+        socketChannel = socketChannel.open(new InetSocketAddress(HOST, PORT));
         //设置非阻塞
         socketChannel.configureBlocking(false);
         //将channel 注册到selector
@@ -40,7 +40,10 @@ public class GroupChatClient {
 
     }
 
-    //向服务器发送消息
+    /**
+     * 发送数据到 服务端，服务端得到数据后，转发到其他客户端:
+     * @param info
+     */
     public void sendInfo(String info) {
 
         info = username + " 说：" + info;

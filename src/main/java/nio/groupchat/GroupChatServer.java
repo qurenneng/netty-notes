@@ -19,6 +19,10 @@ public class GroupChatServer {
 
     //定义全局属性：
     /**
+     * 服务器的ip
+     */
+    private final String HOST = "127.0.0.1";
+    /**
      * 选择器
      */
     private Selector selector;
@@ -39,7 +43,7 @@ public class GroupChatServer {
             //获取通道
             listenChannel = ServerSocketChannel.open();
             //绑定端口
-            listenChannel.socket().bind(new InetSocketAddress("127.0.0.1",PORT));
+            listenChannel.socket().bind(new InetSocketAddress(HOST,PORT));
             //设置非阻塞
             listenChannel.configureBlocking(false);
             //将 listenChannel 注册到  selector

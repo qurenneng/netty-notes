@@ -11,3 +11,5 @@
 [Netty-NIO线程模型](https://blog.csdn.net/qq_41971087/article/details/116572886)
 
 [Netty-NIO:核心组件(Buffer,Channel,Selector)详解](https://blog.csdn.net/qq_41971087/article/details/116616485)
+
+[Netty-NIO 实现简单的群聊系统](https://blog.csdn.net/qq_41971087/article/details/116711272)

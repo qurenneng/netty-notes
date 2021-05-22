@@ -10,6 +10,7 @@ import io.netty.handler.codec.http.HttpServerCodec;
  * @Title
  * @Date 2021/5/22 18:12
  * @time 18:12
+ * http 服务器 编-解码 初始化 处理:
  */
 public class TestServerInitializer extends ChannelInitializer<SocketChannel> {
 

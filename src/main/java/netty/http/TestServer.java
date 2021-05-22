@@ -22,7 +22,7 @@ public class TestServer {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup,workeGroup).channel(NioServerSocketChannel.class)
                     .childHandler(new TestServerInitializer());
-            ChannelFuture channelFuture = serverBootstrap.bind(6668).sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(8080).sync();
             channelFuture.channel().closeFuture().sync();
         }finally {
             bossGroup.shutdownGracefully();

@@ -7,6 +7,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.*;
 import io.netty.util.CharsetUtil;
 
+import java.net.URI;
 import java.net.URL;
 
 /**
@@ -44,7 +45,7 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
             //强转，获取到request 这一步是为了做过滤，因为浏览器会请求2次过来
             //第二次请求过来的接口是 favicon.ico 资源，这里我们拿到后，不做处理。
             HttpRequest httpRequest = (HttpRequest) msg;
-            URL url = new URL(httpRequest.getUri());
+            URI url = new URI(httpRequest.uri());
             if("/favicon.ico".equals(url.getPath())){
                 System.out.println("请求了 favicon.ico ，无需做处理");
                 return;
@@ -56,8 +57,9 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
 
             response.headers().set(HttpHeaderNames.CONTENT_TYPE,"text/plain");
             response.headers().set(HttpHeaderNames.CONTENT_LENGTH,context.readableBytes());
+
             //发送到浏览器:
-            ctx.write(response);
+            ctx.writeAndFlush(response);
 
         }
     }

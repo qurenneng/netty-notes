@@ -51,9 +51,12 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
                 return;
             }
 
-            ByteBuf context = Unpooled.copiedBuffer("hello,我是服务器", CharsetUtil.UTF_8);
+            ByteBuf context = Unpooled.copiedBuffer("hello, Netty !", CharsetUtil.UTF_8);
 
             DefaultFullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, context);
+
+
+            System.out.println("写入到客户端的消息数据:"+context.readableBytes());
 
             response.headers().set(HttpHeaderNames.CONTENT_TYPE,"text/plain");
             response.headers().set(HttpHeaderNames.CONTENT_LENGTH,context.readableBytes());
